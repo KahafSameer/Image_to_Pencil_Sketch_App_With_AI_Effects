@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Effects App</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+        .preview-img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.05);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        body.dark-mode {
+            background-color: #181a1b !important;
+            color: #fff !important;
+        }
+        body.dark-mode .card,
+        body.dark-mode .card-body {
+            background-color: #23272b !important;
+            color: #fff !important;
+        }
+        body.dark-mode .text-muted,
+        body.dark-mode .border-top,
+        body.dark-mode .btn-outline-primary {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.dark-mode .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5 fade-in">
+        {% include 'components/dark_mode_toggle.html' %}
+
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold">🖼️ Image Effects Web App</h1>
+            <p class="text-muted">Apply amazing effects & edit your images easily!</p>
+        </div>
+
+        <!-- Upload & Effects Selector Card -->
+        <div class="card shadow-sm mb-5 fade-in">
+            <div class="card-body">
+                <form action="/uploader" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        {% include 'components/file_input.html' %}
+                    </div>
+                    <div class="mb-3">
+                        {% include 'components/effect_selector.html' %}
+                    </div>
+
+                    <!-- Reset & Crop Buttons -->
+                    <div class="mb-3 d-flex gap-2">
+                        <div class="w-50">
+                            <button type="reset" class="btn btn-outline-primary w-100">🔄 Reset</button>
+                        </div>
+                        <div class="w-50">
+                            <a href="/edit" class="btn btn-outline-primary w-100">✂️ Crop & Rotate Image</a>
+                        </div>
+                    </div>
+
+                    <!-- Apply Effect Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Apply Effect</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Crop Section (Optional) -->
+        {% include 'components/crop_section.html' %}
+
+        <!-- Before & After Section -->
+        <div class="card shadow-sm mb-4 fade-in">
+            <div class="card-body">
+                {% include 'components/before_after_section.html' %}
+            </div>
+        </div>
+
+        <!-- Download Button -->
+        {% if file_url %}
+        <div class="text-center mb-5 fade-in" id="result-section">
+            {% include 'components/download_button.html' %}
+        </div>
+        {% endif %}
+
+        <!-- Share Button -->
+        <div class="text-center fade-in">
+            {% include 'components/share_button.html' %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-4 border-top small text-muted">
+        Made with ❤️ by <strong>Kafi</strong> — Image Effects App © {{ now.year }}
+    </footer>
+
+<script>
+    // Dark mode toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.getElementById('dark-mode-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+            });
+        }
+    });
+</script>
+</body>
+</html>
