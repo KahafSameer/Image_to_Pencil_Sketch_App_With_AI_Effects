@@ -1,62 +1,176 @@
-# 🎨 Photo Editor Pro - Professional Image Processing Suite
+<div align="center">
+
+# 🎨 Photo Editor Pro
+
+**Professional AI-Powered Image Processing Suite**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.1.0-red.svg)](https://flask.palletsprojects.com/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.11.0-orange.svg)](https://opencv.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen.svg)](https://github.com/yourusername/img2sketch)
 
-A comprehensive, professional-grade photo editing application with advanced AI-powered image processing capabilities, modern UI, and enhanced performance.
+*A comprehensive web-based photo editing application featuring advanced AI-powered image processing capabilities, modern responsive UI, and professional-grade effects.*
 
-## ✨ Features Overview
+</div>
 
-### 🎨 **Advanced Image Processing**
-- **Pencil Sketch Effects** - Convert photos to artistic pencil drawings
-- **Background Removal** - AI-powered automatic background removal
-- **Image Enhancement** - Professional quality improvement
-- **Colorization** - Add color to black & white photos
-- **Oil Painting Effects** - Apply artistic oil painting styles
-- **Image Compression** - Smart compression with quality control
+---
 
-### 🚀 **Modern User Interface**
-- **Dark/Light Theme Toggle** - Seamless theme switching
+## 📌 Introduction
+
+**Photo Editor Pro** is a sophisticated image processing application that combines the power of computer vision, machine learning, and modern web technologies to deliver professional-grade photo editing capabilities. Built with Python, Flask, and OpenCV, it offers a wide range of AI-powered effects including pencil sketching, background removal, colorization, cartoonization, and much more.
+
+The application features a modern, responsive web interface with dark/light theme support, real-time preview, and intuitive controls that work seamlessly across desktop and mobile devices.
+
+---
+
+## 🚀 Features
+
+### 🎨 **AI-Powered Image Effects**
+- **Pencil Sketch** - Convert photos to artistic pencil drawings with customizable parameters
+- **Background Removal** - AI-powered automatic background removal using advanced algorithms
+- **Image Colorization** - Add realistic colors to black & white photos using deep learning
+- **Cartoonization** - Transform photos into cartoon-style artwork
+- **Oil Painting** - Apply artistic oil painting effects with brush stroke simulation
+- **Photo Enhancement** - Professional quality improvement with sharpening and denoising
+
+### 🛠️ **Advanced Image Processing**
+- **Smart Compression** - Intelligent image compression with quality control
+- **Real-time Preview** - Instant effect preview with smooth transitions
+- **Batch Processing** - Process multiple images efficiently
+- **Format Support** - JPG, PNG, GIF, BMP, WebP support
+- **High Resolution** - Support for high-resolution images up to 10MB
+
+### 🎯 **Modern User Interface**
 - **Responsive Design** - Perfect on all devices (desktop, tablet, mobile)
-- **Drag & Drop Upload** - Intuitive file handling
-- **Real-time Preview** - Instant effect preview
-- **Smooth Animations** - Hardware-accelerated transitions
-- **Professional Typography** - Inter font for better readability
+- **Dark/Light Theme** - Seamless theme switching with modern aesthetics
+- **Drag & Drop Upload** - Intuitive file handling with visual feedback
+- **Interactive Controls** - Smooth sliders and real-time adjustments
+- **Professional Typography** - Inter font for enhanced readability
+- **Accessibility** - Full keyboard navigation and screen reader support
 
-### 🛠️ **Advanced Tools**
+### ⚡ **Performance & Security**
+- **Optimized Processing** - Efficient algorithms with memory management
+- **File Validation** - Comprehensive input validation and security checks
+- **Error Handling** - Robust error management with user-friendly messages
+- **Caching System** - Smart caching for improved performance
+- **Rate Limiting** - Protection against abuse and overuse
 
-#### **Image Adjustments**
-- **Brightness, Contrast, Saturation** - Fine-tune with precision
-- **Hue Rotation** - Advanced color manipulation
-- **Blur, Grayscale, Sepia** - Artistic effects
-- **Invert Colors** - Creative negative effects
-- **Noise & Pixelation** - Custom texture effects
-- **Vignette** - Professional vignetting
+---
 
-#### **Transform Tools**
-- **Rotate Left/Right** - 90-degree rotations
-- **Flip Horizontal/Vertical** - Mirror transformations
-- **Interactive Crop Tool** - Precise cropping with preview
-- **Perspective Correction** - Advanced geometric correction
+## 📸 Screenshots
 
-#### **AI-Powered Effects**
-- **Enhanced Pencil Sketch** - Multiple sketch styles
-- **Advanced Background Removal** - Multiple algorithms
-- **Smart Image Compression** - Quality-aware compression
-- **AI Colorization** - Restore color to old photos
-- **Professional Enhancement** - Quality improvement
-- **Artistic Oil Painting** - Apply oil painting effects
+<div align="center">
 
-### 📱 **Mobile Optimized**
-- **Touch-optimized** controls
-- **Responsive layout** adapts to screen size
-- **Gesture support** for mobile interactions
-- **Optimized performance** for mobile devices
-- **Offline capability** for basic editing
+### Main Dashboard
+![Main Dashboard](UIImages/Screenshots/Main_Dashboard.png)
+*Professional photo editing interface with modern design and intuitive controls*
 
-## 🚀 Quick Start
+### Sidebar Navigation
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+![Sidebar 1](UIImages/Screenshots/Side_bar1.png)
+*Navigation sidebar with effect categories*
+
+![Sidebar 2](UIImages/Screenshots/side_bar2.png)
+*Advanced settings and controls*
+
+![Sidebar 3](UIImages/Screenshots/side_bar3.png)
+*Theme and customization options*
+
+</div>
+
+### Sample Outputs
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+![Pencil Sketch Output 1](UIImages/Screenshots/Pencil_Sketch_output_1.jpeg)
+*Pencil sketch transformation example*
+
+![Pencil Sketch Output 2](UIImages/Screenshots/Pencil_Sketch_output_2.jpeg)
+*High-quality sketch rendering*
+
+![Oil Painting Output](UIImages/Screenshots/oil_Painting_output_1.jpeg)
+*Oil painting effect demonstration*
+
+</div>
+
+</div>
+
+---
+
+## 🖼️ Project Diagrams
+
+<div align="center">
+
+### System Architecture
+![Architecture Diagram](UIImages/Diagrams/Architecture_Diagram.png)
+*High-level system architecture showing components and data flow*
+
+### Data Flow Diagrams
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+![Level 0 DFD](UIImages/Diagrams/level_0_DFD.png)
+*Level 0 Data Flow Diagram*
+
+![Level 1 DFD](UIImages/Diagrams/level_1_DFD.png)
+*Level 1 Data Flow Diagram*
+
+![Level 2 DFD](UIImages/Diagrams/level_2_DFD.png)
+*Level 2 Data Flow Diagram*
+
+</div>
+
+### Database Design
+![ER Diagram](UIImages/Diagrams/ER_Diagram.png)
+*Entity Relationship Diagram for data modeling*
+
+### System Design
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+![Class Diagrams](UIImages/Diagrams/Class_Diagrams%20.png)
+*Class diagrams showing object relationships*
+
+![Sequence Diagram](UIImages/Screenshots/Sequence_Diagram.png)
+*Sequence diagram for user interaction flow*
+
+</div>
+
+</div>
+
+---
+
+## 🛠️ Tech Stack
+
+### **Backend Technologies**
+- **Python 3.8+** - Core programming language
+- **Flask 3.1.0** - Web framework and API server
+- **OpenCV 4.11.0** - Computer vision and image processing
+- **NumPy** - Numerical computing and array operations
+- **Pillow** - Advanced image manipulation
+- **scikit-image** - Scientific image processing
+
+### **AI & Machine Learning**
+- **ONNX Runtime** - Model inference engine
+- **Caffe Models** - Pre-trained deep learning models
+- **rembg** - Background removal AI
+- **PyMatting** - Advanced matting algorithms
+
+### **Frontend Technologies**
+- **HTML5** - Modern semantic markup
+- **CSS3** - Advanced styling with animations
+- **JavaScript ES6+** - Interactive functionality
+- **Font Awesome** - Professional iconography
+- **Inter Font** - Modern typography
+
+### **Development & Deployment**
+- **Gunicorn** - Production WSGI server
+- **pytest** - Testing framework
+- **Docker** - Containerization support
+- **Git** - Version control
+
+---
+
+## ⚙️ Installation
 
 ### **Prerequisites**
 - Python 3.8 or higher
@@ -64,12 +178,12 @@ A comprehensive, professional-grade photo editing application with advanced AI-p
 - Modern web browser
 - Git (for cloning)
 
-### **Installation**
+### **Step-by-Step Installation**
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/photo-editor-pro.git
-   cd photo-editor-pro
+   git clone https://github.com/yourusername/img2sketch.git
+   cd img2sketch
    ```
 
 2. **Create virtual environment**
@@ -93,112 +207,98 @@ A comprehensive, professional-grade photo editing application with advanced AI-p
    http://localhost:5000
    ```
 
-## 📁 Project Structure
+### **Docker Installation**
+```bash
+# Build Docker image
+docker build -t photo-editor-pro .
 
-```
-photo-editor-pro/
-├── run.py                 # Main Flask application
-├── requirements.txt       # Python dependencies
-├── README.md             # This file
-├── static/               # Static assets
-│   ├── styles.css        # Enhanced CSS styles
-│   ├── script.js         # Enhanced JavaScript
-│   ├── media/            # Uploaded images
-│   └── generated/        # Processed images
-├── templates/            # HTML templates
-│   ├── index.html        # Main editor page
-│   ├── edit_page.html    # Crop/rotate editor
-│   └── components/       # Reusable components
-├── modules/              # Image processing modules
-│   ├── img2Sketch.py     # Enhanced pencil sketch
-│   ├── background_removal.py # Advanced background removal
-│   ├── colorization.py   # AI colorization
-│   ├── oil_painting.py   # Oil painting effects
-│   ├── photo_enhancer.py # Image enhancement
-│   └── image_compression.py # Smart compression
-└── models/               # AI models (if any)
+# Run container
+docker run -p 5000:5000 photo-editor-pro
 ```
 
-## 🎯 Usage Guide
+---
+
+## 📖 Usage
 
 ### **Basic Image Editing**
 
 1. **Upload Image**
-   - Click upload button or drag & drop
-   - Supported: JPG, PNG, GIF, BMP, WebP (up to 10MB)
+   - Click the upload button or drag & drop your image
+   - Supported formats: JPG, PNG, GIF, BMP, WebP (up to 10MB)
 
-2. **Apply Adjustments**
-   - Use sliders for brightness, contrast, saturation
-   - Click filter buttons for instant effects
-   - Real-time preview updates
+2. **Select Effect**
+   - Choose from available AI-powered effects
+   - Adjust parameters using the control panel
+   - Preview changes in real-time
 
-3. **Transform Images**
-   - Rotate, flip, or crop images
-   - Use interactive crop tool
-   - Apply perspective corrections
-
-4. **AI Effects**
-   - Choose from various AI-powered effects
-   - Try different pencil sketch variations
-   - Apply background removal
-
-5. **Save & Export**
-   - Download processed images
-   - Use "Reset All" to start over
+3. **Apply Processing**
+   - Click "Process" to apply the selected effect
+   - Wait for processing to complete
+   - Download the result
 
 ### **Advanced Features**
 
-#### **Pencil Sketch Styles**
+#### **Pencil Sketch Customization**
 ```python
-# Available styles
-styles = ['soft', 'dark', 'light', 'grainy', 'sharp', 
-          'vintage', 'rough', 'detailed', 'classic']
-
-# Example usage
-sketcher = PencilSketch(style='vintage', noise_level=0.15)
-result = sketcher(image)
+# Available parameters
+sketcher = PencilSketch(
+    blur_sigma=5,        # Blur intensity
+    sharpen_value=5,     # Sharpening strength
+    ksize=(0, 0)         # Kernel size
+)
 ```
 
 #### **Background Removal Methods**
 ```python
-# Available methods
-methods = ['rembg', 'opencv', 'hybrid']
-
-# Example usage
-remover = BackgroundRemoval(image, method='hybrid')
-result = remover.convert()
+# Multiple algorithms available
+remover = BackgroundRemoval(
+    method='hybrid',     # 'rembg', 'opencv', 'hybrid'
+    threshold=0.5        # Sensitivity threshold
+)
 ```
 
 #### **Batch Processing**
 ```python
 # Process multiple images
-for image in image_list:
-    processor = ImageProcessor(image)
+for image_path in image_list:
+    processor = ImageProcessor(image_path)
     result = processor.apply_effects(['sketch', 'enhance'])
     processor.save(result)
 ```
 
+### **API Endpoints**
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Main editor interface |
+| `/uploader` | POST | Upload and process images |
+| `/edit` | GET/POST | Crop and rotate editor |
+| `/remove-bg` | POST | Background removal API |
+| `/compress` | POST | Image compression API |
+| `/colorize` | POST | AI colorization API |
+| `/oil_paint` | POST | Oil painting effect API |
+| `/pencil_sketch` | POST | Pencil sketch effect API |
+
+---
+
 ## 🎨 Theme Customization
 
-### **Dark Theme (Default)**
-- Professional dark interface
-- Easy on the eyes
-- Modern aesthetic
+### **Available Themes**
+- **Dark Theme** (Default) - Professional dark interface
+- **Light Theme** - Clean, bright interface
+- **Custom Themes** - Fully customizable CSS variables
 
-### **Light Theme**
-- Clean, bright interface
-- Professional appearance
-- High contrast
-
-### **Custom Themes**
+### **Custom Theme Example**
 ```css
-/* Custom theme variables */
 :root {
     --primary-color: #your-color;
     --bg-primary: #your-bg;
     --text-primary: #your-text;
+    --accent-color: #your-accent;
 }
 ```
+
+---
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -212,73 +312,7 @@ for image in image_list:
 | `Ctrl + C` | Copy image |
 | `Ctrl + V` | Paste image |
 
-## 🔧 Technical Features
-
-### **Performance Optimizations**
-- **Lazy Loading** - Efficient image handling
-- **Memory Management** - Proper cleanup of resources
-- **Caching** - Smart caching for repeated operations
-- **Compression** - Optimized image compression
-- **Multi-threading** - Parallel processing support
-
-### **Security Features**
-- **File Validation** - Size and type checking
-- **Rate Limiting** - Prevent abuse
-- **Security Headers** - XSS and CSRF protection
-- **Input Sanitization** - Safe file handling
-- **Error Handling** - Comprehensive error management
-
-### **Accessibility**
-- **Keyboard Navigation** - Full keyboard support
-- **Screen Reader** - ARIA labels and descriptions
-- **High Contrast** - Accessibility-friendly themes
-- **Focus Management** - Proper focus indicators
-- **Alternative Text** - Image descriptions
-
-## 🚀 API Endpoints
-
-### **Core Endpoints**
-- `GET /` - Main editor interface
-- `POST /uploader` - Upload and process images
-- `GET /edit` - Crop and rotate editor
-- `POST /remove-bg` - Background removal
-- `POST /compress` - Image compression
-- `POST /colorize` - AI colorization
-- `POST /oil_paint` - Oil painting effect
-- `POST /pencil_sketch` - Pencil sketch effect
-
-### **API Endpoints**
-- `GET /api/health` - Health check
-- `GET /api/stats` - Application statistics
-- `POST /api/cleanup` - Clean up old files
-
-## 🎯 Configuration
-
-### **Environment Variables**
-```bash
-# Development
-FLASK_ENV=development
-FLASK_DEBUG=True
-
-# Production
-FLASK_ENV=production
-FLASK_DEBUG=False
-```
-
-### **Configuration Options**
-```python
-# File upload settings
-MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'}
-
-# Processing settings
-MAX_REQUESTS_PER_MINUTE = 60
-PROCESSING_TIMEOUT = 300  # 5 minutes
-
-# Storage settings
-UPLOAD_FOLDER = "./static/media/"
-CLEANUP_INTERVAL = 86400  # 24 hours
-```
+---
 
 ## 🧪 Testing
 
@@ -287,25 +321,23 @@ CLEANUP_INTERVAL = 86400  # 24 hours
 # Install test dependencies
 pip install pytest pytest-cov
 
-# Run tests
+# Run all tests
 pytest tests/ -v --cov=.
 
-# Run specific tests
+# Run specific test modules
 pytest tests/test_image_processing.py -v
+pytest tests/test_api_endpoints.py -v
 ```
 
 ### **Test Coverage**
-- Unit tests for all modules
+- Unit tests for all processing modules
 - Integration tests for API endpoints
 - UI tests for user interactions
 - Performance tests for large images
 
-## 🚀 Deployment
+---
 
-### **Local Development**
-```bash
-python run.py
-```
+## 🚀 Deployment
 
 ### **Production Deployment**
 ```bash
@@ -313,80 +345,95 @@ python run.py
 pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:5000 run:app
 
-# Using Docker
-docker build -t photo-editor-pro .
-docker run -p 5000:5000 photo-editor-pro
+# Using Docker Compose
+docker-compose up -d
 ```
 
-### **Docker Deployment**
-```dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-EXPOSE 5000
-
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
+### **Environment Configuration**
+```bash
+# Production settings
+export FLASK_ENV=production
+export FLASK_DEBUG=False
+export MAX_FILE_SIZE=10485760  # 10MB
+export UPLOAD_FOLDER="./static/media/"
 ```
+
+---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Please follow these guidelines:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
 
 ### **Development Guidelines**
 - Follow PEP 8 style guide
 - Add tests for new features
 - Update documentation
 - Use meaningful commit messages
+- Ensure all tests pass
+
+### **Code Style**
+```bash
+# Format code
+black .
+
+# Check linting
+flake8 .
+
+# Type checking
+mypy .
+```
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+### **License Summary**
+- ✅ Commercial use allowed
+- ✅ Modification allowed
+- ✅ Distribution allowed
+- ✅ Patent use allowed
+- ✅ Private use allowed
 
-- **OpenCV** - Computer vision library
-- **Pillow** - Image processing library
-- **Flask** - Web framework
-- **Font Awesome** - Icons
-- **Inter Font** - Typography
+---
 
-## 📞 Support
+## ⭐ Support
 
-- **Documentation**: [Wiki](https://github.com/yourusername/photo-editor-pro/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/photo-editor-pro/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/photo-editor-pro/discussions)
-- **Email**: support@photoeditorpro.com
+### **Getting Help**
+- 📖 **Documentation**: [Wiki](https://github.com/yourusername/img2sketch/wiki)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/img2sketch/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/img2sketch/discussions)
+- 📧 **Email Support**: support@photoeditorpro.com
+
+### **Community**
+- 🌟 **Star the project** if you find it useful
+- 🍴 **Fork the repository** to contribute
+- 📢 **Share with others** who might benefit
+- 💡 **Suggest new features** via issues
+
+---
 
 ## 🎯 Roadmap
 
-### **v2.1 Features**
-- [ ] Batch processing interface
-- [ ] Cloud storage integration
-- [ ] Social media sharing
-- [ ] Advanced AI filters
-- [ ] Video processing support
+### **Upcoming Features**
+- [ ] **Batch Processing Interface** - Process multiple images at once
+- [ ] **Cloud Storage Integration** - Direct upload to cloud services
+- [ ] **Social Media Sharing** - Share processed images directly
+- [ ] **Advanced AI Filters** - More sophisticated AI effects
+- [ ] **Video Processing Support** - Extend to video editing
+- [ ] **Real-time Collaboration** - Multi-user editing sessions
+- [ ] **Plugin System** - Extensible architecture for custom effects
+- [ ] **Mobile App** - Native mobile application
+- [ ] **API Documentation** - Comprehensive API docs with examples
 
-### **v2.2 Features**
-- [ ] Real-time collaboration
-- [ ] Plugin system
-- [ ] Advanced export options
-- [ ] Mobile app
-- [ ] API documentation
-
-### **v3.0 Features**
-- [ ] AI-powered editing suggestions
-- [ ] Advanced style transfer
-- [ ] 3D image processing
-- [ ] VR/AR support
-- [ ] Enterprise features
+---
 
 ## 🔧 Troubleshooting
 
@@ -421,15 +468,7 @@ export FLASK_ENV=production
 export FLASK_DEBUG=False
 ```
 
-### **Debug Mode**
-```bash
-# Enable debug mode
-export FLASK_DEBUG=1
-export LOG_LEVEL=DEBUG
-
-# Run with debug
-python run.py
-```
+---
 
 ## 📊 Performance Metrics
 
@@ -445,9 +484,24 @@ python run.py
 - **Storage**: 10GB+ available space
 - **Network**: Stable internet connection
 
+---
+
+## 🙏 Acknowledgments
+
+- **OpenCV** - Computer vision library
+- **Pillow** - Image processing library
+- **Flask** - Web framework
+- **Font Awesome** - Icons
+- **Inter Font** - Typography
+- **Contributors** - All developers who contributed to this project
+
+---
+
+<div align="center">
+
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/photo-editor-pro&type=Date)](https://star-history.com/#yourusername/photo-editor-pro&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/img2sketch&type=Date)](https://star-history.com/#yourusername/img2sketch&Date)
 
 ---
 
@@ -457,6 +511,6 @@ python run.py
 
 ---
 
-<div align="center">
-  <sub>Built with ❤️ by the Photo Editor Pro Team</sub>
+<sub>Built with ❤️ by the Photo Editor Pro Team</sub>
+
 </div>
