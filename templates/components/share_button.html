@@ -1,0 +1,41 @@
+<!-- Share Button -->
+<button class="btn btn-outline-primary mt-3 w-100 shadow-sm d-flex align-items-center justify-content-center gap-2" id="shareBtn">
+    <span id="shareIcon">📤</span>
+    <span id="shareText">Share Image</span>
+</button>
+
+<script>
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+    const button = document.getElementById('shareBtn');
+    const icon = document.getElementById('shareIcon');
+    const text = document.getElementById('shareText');
+    const fileUrl = "{{ file_url }}";
+
+    // Show loading state
+    icon.textContent = '⏳';
+    text.textContent = 'Sharing...';
+
+    try {
+        const response = await fetch(fileUrl);
+        const blob = await response.blob();
+        const file = new File([blob], 'processed_image.jpg', { type: blob.type });
+
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+                files: [file],
+                title: 'My Edited Image',
+                text: 'Check out this image I created!',
+            });
+        } else {
+            alert("❌ Sharing not supported on this device.");
+        }
+    } catch (err) {
+        console.error("Error sharing file:", err);
+        alert("⚠️ Something went wrong while sharing.");
+    }
+
+    // Reset button
+    icon.textContent = '📤';
+    text.textContent = 'Share Image';
+});
+</script>

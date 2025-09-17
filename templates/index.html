@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Photo Editor Pro</title>
+
+    <!-- Use Flask static path for styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Spinner -->
+    <div class="spinner-overlay" id="spinnerOverlay">
+        <div class="spinner"></div>
+        <div class="spinner-text">Processing...</div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast" id="toast"></div>
+
+    <div class="container">
+        <!-- Enhanced Header -->
+        <header class="editor-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Photo Editor Pro</h1>
+                        <p>Professional Image Processing</p>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="action-btn secondary" onclick="window.location.reload()" title="Refresh">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                    <button class="action-btn primary" onclick="document.getElementById('imageUploader').click()" title="Upload Image">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload</span>
+                    </button>
+                    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="editor-container">
+            <!-- Enhanced Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <div class="tool-section open">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Upload Image</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="upload-area">
+                                <button class="upload-btn">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Choose Image</span>
+                                    <small>JPG, PNG, GIF up to 10MB</small>
+                                </button>
+                                <input type="file" id="imageUploader" accept="image/*" hidden />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section open">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-sliders-h"></i>
+                                <h3>Adjustments</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="slider-container">
+                                <div class="slider-header">
+                                    <span class="slider-name">Brightness</span>
+                                    <span class="slider-value">100%</span>
+                                </div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="brightnessSlider" max="200" min="0" value="100" />
+                                    <div class="slider-track"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-magic"></i>
+                                <h3>Filters</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="filter-grid">
+                                <button class="clear-effects" title="Clear All Effects">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>Clear All</span>
+                                </button>
+                                <button title="brightness" id="brightness" class="filter-btn active">
+                                    <i class="fas fa-sun"></i>
+                                    <span>Brightness</span>
+                                </button>
+                                <button title="contrast" id="contrast" class="filter-btn">
+                                    <i class="fas fa-adjust"></i>
+                                    <span>Contrast</span>
+                                </button>
+                                <button title="saturate" id="saturate" class="filter-btn">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Saturation</span>
+                                </button>
+                                <button title="invert" id="invert" class="filter-btn">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Invert</span>
+                                </button>
+                                <button title="blur" id="blur" class="filter-btn">
+                                    <i class="fas fa-smog"></i>
+                                    <span>Blur</span>
+                                </button>
+                                <button title="grayscale" id="grayscale" class="filter-btn">
+                                    <i class="fas fa-circle-half-stroke"></i>
+                                    <span>Grayscale</span>
+                                </button>
+                                <button title="sepia" id="sepia" class="filter-btn">
+                                    <i class="fas fa-image"></i>
+                                    <span>Sepia</span>
+                                </button>
+                                <button title="hue" id="hue" class="filter-btn">
+                                    <i class="fas fa-rainbow"></i>
+                                    <span>Hue</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-crop-alt"></i>
+                                <h3>Transform</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="transform-grid">
+                                <button title="rotate_left" id="rotate_left" class="transform-btn">
+                                    <i class="fas fa-undo"></i>
+                                    <span>Rotate Left</span>
+                                </button>
+                                <button title="rotate_right" id="rotate_right" class="transform-btn">
+                                    <i class="fas fa-redo"></i>
+                                    <span>Rotate Right</span>
+                                </button>
+                                <button title="flip_x" id="flip_x" class="transform-btn">
+                                    <i class="fas fa-arrows-alt-h"></i>
+                                    <span>Flip H</span>
+                                </button>
+                                <button title="flip_y" id="flip_y" class="transform-btn">
+                                    <i class="fas fa-arrows-alt-v"></i>
+                                    <span>Flip V</span>
+                                </button>
+                                <button title="crop" id="crop" class="transform-btn">
+                                    <i class="fas fa-crop"></i>
+                                    <span>Crop</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Pencil Sketch Section -->
+                    <div class="tool-section">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-pencil-ruler"></i>
+                                <h3>Pencil Sketch</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="sketch-controls">
+                                <button id="undo-sketch-btn" class="undo-btn" title="Undo last sketch effect">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>Undo Sketch</span>
+                                </button>
+                            </div>
+                            <div class="sketch-variations-grid">
+                                <button class="sketch-variation-btn" data-blur="10" data-sharpen="7">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Soft Sketch</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="5" data-sharpen="25">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Dark Sketch</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="2" data-sharpen="5">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Light Sketch</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="6" data-sharpen="20">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Grainy</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="2" data-sharpen="50">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Sharp Outline</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="4" data-sharpen="15">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Vintage</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="5" data-sharpen="25">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Rough Edges</span>
+                                </button>
+                                <button class="sketch-variation-btn" data-blur="1" data-sharpen="60">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Detailed</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <button class="section-toggle" type="button">
+                            <div class="toggle-content">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                                <h3>AI Effects</h3>
+                            </div>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="section-content">
+                            <div class="ai-controls">
+                                <button id="undo-ai-btn" class="undo-btn" title="Undo last AI effect">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>Undo AI Effect</span>
+                                </button>
+                            </div>
+                            <div class="effects-grid">
+                                <button title="sketch" id="sketch" class="effect-btn">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <span>Pencil Sketch</span>
+                                </button>
+                                <button title="background_removal" id="background_removal" class="effect-btn">
+                                    <i class="fas fa-eraser"></i>
+                                    <span>Remove BG</span>
+                                </button>
+                                <button title="compression" id="compression" class="effect-btn">
+                                    <i class="fas fa-compress"></i>
+                                    <span>Compress</span>
+                                </button>
+                                <button title="colorization" id="colorization" class="effect-btn">
+                                    <i class="fas fa-fill-drip"></i>
+                                    <span>Colorize</span>
+                                </button>
+                                <button title="enhancer" id="enhancer" class="effect-btn">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Enhance</span>
+                                </button>
+                                <button title="oil_painting" id="oil_painting" class="effect-btn">
+                                    <i class="fas fa-brush"></i>
+                                    <span>Oil Paint</span>
+                                </button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Enhanced Main Content Area -->
+            <main class="editor-content">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Uploaded Image" id="mainImage" onload="handleImageLoad()" onerror="handleImageError()" />
+                        <div class="image-overlay" id="imageOverlay">
+                            <div class="upload-prompt">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Upload an Image</h3>
+                                <p>Drag and drop or click to browse</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crop-controls">
+                        <img src="" id="demo_Crop" alt="Cropped Preview" class="crop-preview" />
+                        <button class="cropBtn">Apply Crop</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Enhanced Footer -->
+        <footer class="editor-footer">
+            <div class="footer-content">
+                <button class="footer-btn reset" onclick="window.location.reload()">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Reset All</span>
+                </button>
+                <button class="footer-btn save">
+                    <i class="fas fa-save"></i>
+                    <span>Save Image</span>
+                </button>
+                <button class="footer-btn download invisible-btn" onclick="downloadImage()">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+    function downloadImage() {
+        const img = document.getElementById('mainImage');
+        if (!img || !img.src) return;
+        const link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'edited-image.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+        const icon = document.querySelector('.theme-toggle i');
+        if (document.body.classList.contains('light-theme')) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    function showToast(message, type = 'info') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type}`;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    function showSpinner() {
+        document.getElementById('spinnerOverlay').classList.add('active');
+    }
+
+    function hideSpinner() {
+        document.getElementById('spinnerOverlay').classList.remove('active');
+    }
+
+    function handleImageLoad() {
+        const img = document.getElementById('mainImage');
+        const overlay = document.getElementById('imageOverlay');
+        
+        if (img && img.src && !img.src.includes('image.jpg')) {
+            // Hide overlay if a real image is loaded
+            overlay.style.display = 'none';
+        } else {
+            // Show overlay for default image
+            overlay.style.display = 'flex';
+        }
+    }
+
+    function handleImageError() {
+        const overlay = document.getElementById('imageOverlay');
+        overlay.style.display = 'flex';
+    }
+
+    // Initialize image state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        handleImageLoad();
+    });
+    </script>
+</body>
+
+</html>

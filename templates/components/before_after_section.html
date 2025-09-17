@@ -1,0 +1,33 @@
+<!-- Before & After Preview Section -->
+
+<h5 class="text-center mb-4 fw-semibold">📸 Before & After</h5>
+
+{% if not file_url %}
+<div class="row justify-content-center mb-4">
+    <div class="col-md-5 mb-3">
+        <p class="text-muted fw-medium">Original Image</p>
+        <div class="bg-light preview-img d-flex align-items-center justify-content-center" style="height: 250px;">
+            <span class="text-muted">No image uploaded</span>
+        </div>
+    </div>
+    <div class="col-md-5 mb-3">
+        <p class="text-muted fw-medium">Processed Image</p>
+        <div class="bg-light preview-img d-flex align-items-center justify-content-center" style="height: 250px;">
+            <span class="text-muted">No image processed</span>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if file_url %}
+<div class="row justify-content-center mb-4">
+    <div class="col-md-5 mb-3 text-center">
+        <p class="text-muted fw-medium">Original Image</p>
+        <img src="{{ original_url }}" alt="Original" class="img-fluid preview-img">
+    </div>
+    <div class="col-md-5 mb-3 text-center">
+        <p class="text-muted fw-medium">Processed Image</p>
+        <img src="{{ file_url }}" alt="Processed" class="img-fluid preview-img">
+    </div>
+</div>
+{% endif %}

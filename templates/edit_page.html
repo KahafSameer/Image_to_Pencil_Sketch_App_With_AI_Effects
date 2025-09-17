@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop & Rotate Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & CropperJS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+      color: #212529;
+    }
+
+    .editor-wrapper {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h2 {
+      font-weight: bold;
+      text-align: center;
+      color: inherit;
+    }
+
+    .img-preview {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-custom {
+      min-width: 140px;
+      font-weight: 500;
+      border-radius: 12px;
+    }
+
+    .btn-custom:hover {
+      opacity: 0.9;
+    }
+
+    .button-row {
+      gap: 15px;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 576px) {
+      .button-row {
+        flex-direction: column;
+      }
+    }
+
+    /* 🌙 Dark Mode */
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .editor-wrapper {
+      background-color: #1f1f1f;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .btn,
+    body.dark-mode input {
+      background-color: #2c2c2c;
+      color: #eee;
+      border-color: #444;
+    }
+
+    body.dark-mode .btn-outline-secondary {
+      color: #ccc;
+      border-color: #666;
+    }
+
+    body.dark-mode .btn-outline-secondary:hover {
+      background-color: #333;
+    }
+
+    body.dark-mode .img-preview {
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+    }
+
+    .editor-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .sidebar {
+      flex: 0 0 250px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .image-panel {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="editor-wrapper">
+  <!-- 🌙 Dark Mode Toggle -->
+  <div class="text-end mb-3">
+    <button id="toggle-dark" class="btn btn-outline-secondary btn-sm">
+      🌙 Toggle Dark Mode
+    </button>
+  </div>
+
+  <h2>🎯 Crop & Rotate Tool</h2>
+
+  <div class="editor-container">
+    <aside class="sidebar">
+      <!-- Tool buttons here -->
+      {% if not image_path %}
+      <!-- Upload form -->
+      <form method="POST" enctype="multipart/form-data" class="mt-4">
+        <div class="mb-3">
+          <input type="file" name="file" class="form-control form-control-lg" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100 btn-lg btn-custom">Upload Image</button>
+      </form>
+      {% else %}
+      <div class="mt-4 d-flex flex-column gap-3">
+        <button class="btn btn-dark btn-custom" onclick="cropper.rotate(90)">🔁 Rotate 90°</button>
+        <button class="btn btn-danger btn-custom" onclick="cropImage()">✂️ Crop & Save</button>
+        <a href="/" class="btn btn-outline-secondary btn-custom">⬅️ Back</a>
+      </div>
+      {% endif %}
+    </aside>
+    <main class="image-panel">
+      <!-- Image preview here -->
+      {% if image_path %}
+      <div class="mt-4">
+        <img id="image" src="{{ image_path }}" alt="To Edit" class="img-fluid img-preview">
+      </div>
+      {% endif %}
+    </main>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script>
+  let cropper;
+
+  window.onload = function () {
+    const image = document.getElementById('image');
+    if (image) {
+      cropper = new Cropper(image, {
+        aspectRatio: NaN,
+        viewMode: 1,
+        background: false,
+        autoCropArea: 1
+      });
+    }
+
+    // Apply stored dark mode preference
+    if (localStorage.getItem("dark-mode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    // Toggle dark mode
+    const toggleBtn = document.getElementById('toggle-dark');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("dark-mode", isDark);
+    });
+  };
+
+  function cropImage() {
+    const canvas = cropper.getCroppedCanvas();
+    const croppedImageURL = canvas.toDataURL("image/jpeg");
+
+    const link = document.createElement("a");
+    link.href = croppedImageURL;
+    link.download = "cropped_image.jpg";
+    link.click();
+  }
+</script>
+
+</body>
+</html>
