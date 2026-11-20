@@ -165,7 +165,6 @@ The application features a modern, responsive web interface with dark/light them
 ### **Development & Deployment**
 - **Gunicorn** - Production WSGI server
 - **pytest** - Testing framework
-- **Docker** - Containerization support
 - **Git** - Version control
 
 ---
@@ -182,8 +181,8 @@ The application features a modern, responsive web interface with dark/light them
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/img2sketch.git
-   cd img2sketch
+   git clone https://github.com/KahafSameer/Image_to_Pencil_Sketch_App_With_AI_Effects.git
+   cd Image_to_Pencil_Sketch_App_With_AI_Effects
    ```
 
 2. **Create virtual environment**
@@ -206,15 +205,6 @@ The application features a modern, responsive web interface with dark/light them
    ```
    http://localhost:5000
    ```
-
-### **Docker Installation**
-```bash
-# Build Docker image
-docker build -t photo-editor-pro .
-
-# Run container
-docker run -p 5000:5000 photo-editor-pro
-```
 
 ---
 
@@ -344,9 +334,6 @@ pytest tests/test_api_endpoints.py -v
 # Using Gunicorn
 pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:5000 run:app
-
-# Using Docker Compose
-docker-compose up -d
 ```
 
 ### **Environment Configuration**
